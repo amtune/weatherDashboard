@@ -29,11 +29,11 @@ function fetchCurrent(city) {
     .then(function(data) {
         console.log(data)
         nameEl.innerHTML = data.name
-        icon.setAttribute("src", "")
+        icon.setAttribute("src", `https://openweathermap.org/img/wn/${data.weather[0].icon}.png`)
         icon.setAttribute("alt", data.weather[0].description)
-        temp.innerHTML = data.main.temp
-        hum.innerHTML = data.main.humidity
-        wind.innerHTML = data.wind.speed
+        temp.innerHTML = `Temp: ${data.main.temp}&#176F`
+        hum.innerHTML = `Hum: ${data.main.humidity}%`
+        wind.innerHTML = `Wind: ${data.wind.speed}mph`
     });
 };
 
