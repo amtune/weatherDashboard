@@ -1,0 +1,12 @@
+* {
+    text-align: center;
+}
+
+.forecast {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+li {
+    list-style-type: none;
+}
