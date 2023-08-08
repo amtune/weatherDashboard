@@ -3,8 +3,7 @@ const searchInput = document.querySelector('.searchInput');
 const searchBtn = document.querySelector('.searchBtn');
 const history = document.querySelector('.history');
 
-const current = document.querySelector('.current');
-const name = document.querySelector('.name');
+const nameEl = document.querySelector('.name');
 const icon = document.querySelector('.icon');
 const temp = document.querySelector('.temp');
 const hum = document.querySelector('.hum');
@@ -23,21 +22,27 @@ searchBtn.addEventListener("click", function(event) {
 });
 
 function fetchCurrent(city) {
-    fetch()
+    fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${key}&units=imperial`)
     .then(function(res) {
-        return res.json()
+        return res.json();
     })
     .then(function(data) {
         console.log(data)
-    })
+        nameEl.innerHTML = data.name
+        icon.setAttribute("src", "")
+        icon.setAttribute("alt", data.weather[0].description)
+        temp.innerHTML = data.main.temp
+        hum.innerHTML = data.main.humidity
+        wind.innerHTML = data.wind.speed
+    });
 };
 
 function fetchForecast(city) {
-    fetch()
+    fetch(`https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${key}&units=imperial`)
     .then(function(res) {
-        return res.json()
+        return res.json();
     })
     .then(function(data) {
         console.log(data)
-    })
+    });
 };
